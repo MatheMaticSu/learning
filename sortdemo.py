@@ -1,3 +1,6 @@
+from typing import Hashable
+
+
 lis = [4,5,6,1,3,2]
 
 '''
@@ -66,5 +69,37 @@ class Insertion():
                     j -= 1
                 else:
                     break
-Insertion.sorte(lis)
+# Insertion.sorte(lis)
+# print(lis)
+'''
+希尔排序
+'''
+class Shell():
+    def compare(a, b):
+        if a > b:
+            return True
+    def exch(s, i, j):
+        temp = s[i]
+        s[i] = s[j]
+        s[j] = temp
+    def sorte(s):
+        h = 1
+        while h < len(s)/2:
+            h = 2*h + 1     # 确定h
+        while h>=1:
+            i = h
+            while i < len(s):
+                j = i
+                while j >= h:
+
+                    if Shell.compare(s[j-h], s[j]):
+                        Shell.exch(s, j-h,j)
+                    
+                    else:
+                        break
+                    j -= h
+                i += 1 
+            h = h//2
+
+Shell.sorte(lis)
 print(lis)
